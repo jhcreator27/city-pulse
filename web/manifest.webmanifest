@@ -1,0 +1,23 @@
+{
+  "name": "City Pulse – Eventi Palermo",
+  "short_name": "City Pulse",
+  "description": "Concerti, spettacoli, feste, sagre, cultura e movida a Palermo. Una produzione JH STUDIOS.",
+  "lang": "it",
+  "start_url": "./#esplora",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E00000",
+  "theme_color": "#E00000",
+  "categories": ["entertainment", "events", "lifestyle"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "I miei biglietti", "url": "./#biglietti", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Stasera", "url": "./#esplora" },
+    { "name": "Check-in staff", "url": "./#staff" }
+  ]
+}

@@ -1,0 +1,5 @@
+# Netlify / Cloudflare Pages: pagine pubbliche servite dalla funzione seo (sostituisci <PROJECT-REF>)
+/evento/*      https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/evento/:splat   200
+/luogo/*       https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/luogo/:splat    200
+/artista/*     https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/artista/:splat  200
+/sitemap.xml   https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/sitemap.xml     200

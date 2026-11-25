@@ -1,0 +1,57 @@
+{
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/config.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(self), geolocation=(), microphone=()"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/evento/:slug",
+      "destination": "https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/evento/:slug"
+    },
+    {
+      "source": "/luogo/:id",
+      "destination": "https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/luogo/:id"
+    },
+    {
+      "source": "/artista/:slug",
+      "destination": "https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/artista/:slug"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://<PROJECT-REF>.supabase.co/functions/v1/seo?path=/sitemap.xml"
+    }
+  ]
+}

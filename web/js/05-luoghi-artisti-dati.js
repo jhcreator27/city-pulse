@@ -1,0 +1,44 @@
+// City Pulse · Una produzione JH STUDIOS
+// Modulo caricato in ordine da index.html: le dichiarazioni sono condivise tra i file (script classici).
+/* ---------- luoghi di Palermo ---------- */
+const VEN=[
+ {id:'teatro-massimo',n:'Teatro Massimo',k:'teatro',zone:'Centro Storico',addr:'Piazza Verdi, Palermo',x:49,y:50,d:'Il più grande teatro lirico d\'Italia, inaugurato nel 1897. La scalinata con i due leoni di bronzo è uno dei punti d\'incontro della città.',de:'Italy\'s largest opera house, opened in 1897. The staircase with its two bronze lions is one of the city\'s favourite meeting points.'},
+ {id:'politeama',n:'Teatro Politeama Garibaldi',k:'teatro',zone:'Politeama',addr:'Piazza Ruggero Settimo, Palermo',x:46,y:41,d:'Teatro ottocentesco coronato dalla quadriga di bronzo, sede dell\'Orchestra Sinfonica Siciliana.',de:'A 19th-century theatre crowned by a bronze quadriga, home of the Sicilian Symphony Orchestra.'},
+ {id:'teatro-biondo',n:'Teatro Biondo',k:'teatro',zone:'Centro Storico',addr:'Via Roma 258, Palermo',x:57,y:65,d:'Il teatro di via Roma, sede del Teatro Biondo Stabile di Palermo: prosa, danza e scena contemporanea.',de:'The theatre on Via Roma, home of Palermo\'s resident company: drama, dance and contemporary performance.'},
+ {id:'santa-cecilia',n:'Real Teatro Santa Cecilia',k:'teatro',zone:'Vucciria',addr:'Piazza Santa Cecilia, Palermo',x:56,y:53,d:'Uno dei teatri più antichi della città, nel cuore della Vucciria: oggi è la casa del jazz con la Fondazione The Brass Group.',de:'One of the city\'s oldest theatres, in the heart of the Vucciria: today the home of jazz with The Brass Group foundation.'},
+ {id:'verdura',n:'Teatro di Verdura',k:'piazza',zone:'Libertà',addr:'Viale del Fante 70, Palermo',x:34,y:24,d:'Il teatro all\'aperto nel giardino di Villa Castelnuovo, palcoscenico dei grandi concerti estivi.',de:'The open-air theatre in the garden of Villa Castelnuovo, stage of the big summer concerts.'},
+ {id:'castello-a-mare',n:'Castello a Mare',k:'castello',zone:'La Cala',addr:'Via Filippo Patti, Palermo',x:70,y:47,d:'Fortezza medievale all\'ingresso del porto della Cala, oggi parco archeologico affacciato sul mare.',de:'A medieval fortress at the mouth of La Cala harbour, now an archaeological park overlooking the sea.'},
+ {id:'zisa',n:'Cantieri Culturali alla Zisa',k:'zisa',zone:'Zisa',addr:'Via Paolo Gili 4, Palermo',x:26,y:52,d:'L\'ex complesso industriale Ducrot trasformato in polo culturale: padiglioni per mostre, cinema, concerti e festival.',de:'The former Ducrot industrial complex turned cultural hub: pavilions for exhibitions, cinema, concerts and festivals.'},
+ {id:'ballaro',n:'Mercato di Ballarò',k:'mercato',zone:'Ballarò',addr:'Piazza Ballarò, Palermo',x:38,y:71,d:'Uno dei mercati storici più antichi della città: voci dei venditori, cibo di strada e la vita dell\'Albergheria.',de:'One of the city\'s oldest historic markets: vendors\' cries, street food and the life of the Albergheria.'},
+ {id:'garraffello',n:'Piazza Garraffello',k:'mercato',zone:'Vucciria',addr:'Piazza Garraffello, Palermo',x:53,y:43,d:'La piazza nel cuore della Vucciria, punto di ritrovo della movida notturna tra vicoli e murales.',de:'The square at the heart of the Vucciria, a nightlife meeting point among alleys and murals.'},
+ {id:'porta-felice',n:'Porta Felice',k:'porta',zone:'Foro Italico',addr:'Foro Umberto I, Palermo',x:79,y:69,d:'La porta monumentale cinquecentesca che apre il Cassaro verso il mare e la passeggiata del Foro Italico.',de:'The 16th-century monumental gate opening the Cassaro onto the sea and the Foro Italico promenade.'},
+ {id:'foro-italico',n:'Foro Italico',k:'porta',zone:'Foro Italico',addr:'Foro Umberto I, Palermo',x:78,y:66,d:'La passeggiata verde sul lungomare tra Porta Felice e la Kalsa.',de:'The green seafront promenade between Porta Felice and the Kalsa.'},
+ {id:'cala',n:'Porticciolo della Cala',k:'porto',zone:'La Cala',addr:'Banchina della Cala, Palermo',x:73,y:37,d:'Il porto più antico della città, oggi approdo turistico circondato da bar e ristoranti.',de:'The city\'s oldest harbour, now a marina surrounded by bars and restaurants.'},
+ {id:'palazzo-riso',n:'Palazzo Riso',k:'palazzo',zone:'Cassaro',addr:'Corso Vittorio Emanuele 365, Palermo',x:41,y:59,d:'Palazzo settecentesco sul Cassaro, sede del Museo d\'arte contemporanea della Sicilia.',de:'An 18th-century palazzo on the Cassaro, home of the Museum of Contemporary Art of Sicily.'},
+ {id:'san-bartolomeo',n:'Loggiato San Bartolomeo',k:'loggia',zone:'Kalsa',addr:'Via Vittorio Emanuele 25, Palermo',x:76,y:57,d:'Spazio espositivo sul lungomare della Kalsa, tra il Foro Italico e Porta Felice.',de:'An exhibition space on the Kalsa seafront, between Foro Italico and Porta Felice.'},
+ {id:'magione',n:'Piazza Magione',k:'piazza',zone:'Kalsa',addr:'Piazza Magione, Palermo',x:70,y:62,d:'Il grande prato della Kalsa, spazio di concerti e feste all\'aperto.',de:'The Kalsa\'s great lawn, a space for open-air concerts and festivals.'},
+ {id:'mondello',n:'Piazza Mondello',k:'mare',zone:'Mondello',addr:'Piazza Mondello, Palermo',x:36,y:31,d:'La piazza della borgata marinara, a pochi passi dalla spiaggia e dallo stabilimento Liberty sul mare.',de:'The seaside village square, a short walk from the beach and the Art Nouveau bathing pavilion.'}
+];
+const venueOf=e=>VEN.find(v=>v.n===e.venue)||VEN.find(v=>e.venue&&(v.n.includes(e.venue)||e.venue.includes(v.n)))||{id:'',n:e.venue||'',k:'piazza',zone:e.zone||'',addr:e.addr||'',x:e.x,y:e.y};
+const isNight=e=>{const m=toMin(e.time||'21:00');return m>=17*60||m<5*60};
+const VK=v=>({...v,x:v.x,y:v.y});
+const vKm=v=>v.id==='mondello'?10.5:Math.hypot((v.x-55.25)*4,(v.y-57.7)*5.2)*0.0167;
+
+/* ---------- artisti ---------- */
+const ART={'Cosmo Elettrico':['Synth-pop','Progetto synth-pop nato tra Palermo e Berlino: sintetizzatori anni Ottanta, testi in italiano e live pieni di luci.','A synth-pop project born between Palermo and Berlin: 80s synths, Italian lyrics and light-filled live shows.'],
+ 'Giulia & The Echoes':['Dream pop','Band dream pop palermitana: chitarre riverberate, voce eterea e set acustici al tramonto.','A Palermo dream-pop band: reverb-drenched guitars, ethereal vocals and acoustic sunset sets.'],
+ 'Kalsa Club':['Indie rock','Quattro amici della Kalsa, chitarre veloci e ritornelli da cantare tutti insieme.','Four friends from the Kalsa, fast guitars and sing-along choruses.'],
+ 'DJ Aria':['Indie dance & nu-disco','Selezioni indie dance e nu-disco per chiudere le serate col sorriso.','Indie dance and nu-disco selections to close the night with a smile.'],
+ 'Kaleido':['Melodic techno','Live set di techno melodica con visual generativi.','Melodic techno live sets with generative visuals.'],
+ 'Nina Volt':['Techno','Techno potente e ipnotica, ospite fissa dei festival europei.','Powerful, hypnotic techno, a regular at European festivals.'],
+ 'Reflex b2b Mara':['House & breaks','Due DJ, un solo groove: house, breakbeat e tanta energia fino all\'alba.','Two DJs, one groove: house, breakbeat and energy until dawn.'],
+ 'Brass Quartet':['Jazz','Quartetto acustico tra standard e composizioni originali.','An acoustic quartet playing standards and original compositions.'],
+ 'Palermo Jazz Quartet':['Jazz','Standard jazz in chiave moderna, con un occhio alla tradizione siciliana.','Modern takes on jazz standards, with an eye on Sicilian tradition.']};
+const slug=s=>String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+function allArtists(){const m=new Map();for(const e of EV){if(e.draft)continue;for(const l of (e.lu||[])){const n=l[2];if(!n||/^(Apertura|Chiusura|Porte)$/.test(n))continue;const k=slug(n);if(!m.has(k))m.set(k,{id:k,n,g:(ART[n]||[])[0]||l[3]||'Live',ev:[]});m.get(k).ev.push(e)}}return [...m.values()]}
+const artistBy=id=>allArtists().find(a=>a.id===id);
+const ACOL=['#E00000','#171717','#7a5a00','#a80000'];
+function artAvatar(a,size=120){const h=hash(a.id),c1=ACOL[h%4],c2=ACOL[(h>>3)%4===h%4?(h%4+1)%4:(h>>3)%4];let bars='';for(let i=0;i<18;i++){const v=6+((h>>(i%16))&15)*1.6;bars+=`<rect x="${14+i*5.4}" y="${86-v/2}" width="3" height="${v}" rx="1.5" fill="#FFC107" opacity=".9"/>`}
+ const ini=a.n.replace(/&/g,'').split(/\s+/).filter(Boolean).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+ return `<svg viewBox="0 0 120 120" width="${size}" height="${size}" role="img" aria-label="${esc(a.n)}"><defs><linearGradient id="av${h}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2===c1?'#171717':c2}"/></linearGradient></defs><circle cx="60" cy="60" r="60" fill="url(#av${h})"/><text x="60" y="64" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="44" fill="#fff">${esc(ini)}</text>${bars}</svg>`}
+

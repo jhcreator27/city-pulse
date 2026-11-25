@@ -1,0 +1,15 @@
+# segreti e chiavi: mai su GitHub
+.env
+.env.*
+!.env.example
+web/config.js
+supabase/.temp/
+supabase/.branches/
+
+# sistema ed editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+*.log

@@ -1,0 +1,26 @@
+# Configurazione delle Edge Functions di City Pulse
+[functions.create-checkout]
+verify_jwt = true
+
+[functions.connect-onboarding]
+verify_jwt = true
+
+[functions.send-push]
+verify_jwt = true
+
+# Stripe non invia un JWT Supabase: la sicurezza è la firma del webhook
+[functions.stripe-webhook]
+verify_jwt = false
+
+# Pagine pubbliche per Google: nessun login richiesto
+[functions.seo]
+verify_jwt = false
+
+[functions.event-refunds]
+verify_jwt = true
+
+[functions.delete-account]
+verify_jwt = true
+
+[functions.gift-email]
+verify_jwt = true
